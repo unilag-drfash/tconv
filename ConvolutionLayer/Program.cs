@@ -16,6 +16,7 @@ namespace ConvolutionLayer
             Form1 form = new Form1();
             Image im = Image.init("C:\\Users\\TOLIZU\\Pictures\\g1.jpeg");
             var a = im.GetImage().Data;
+            Console.WriteLine(a.Rank);
             //Console.WriteLine(a[0,0,1]);
 
           //  Console.WriteLine(im.GetImage());
