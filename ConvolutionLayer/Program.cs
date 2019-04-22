@@ -15,9 +15,10 @@ namespace ConvolutionLayer
         {
             Form1 form = new Form1();
             Image im = Image.init("C:\\Users\\TOLIZU\\Pictures\\g1.jpeg");
-            var a = im.GetImage().Data;
-            Console.WriteLine(a.Rank);
-            //Console.WriteLine(a[0,0,1]);
+            var a = im.GetImage();
+           //   var b = Array.CreateInstance(Double, a.Rows, a.Cols, a.NumberOfChannels); b = a.ManagedArray; ;
+            Console.WriteLine(a.Rows + " " + a.Cols + " " + a.NumberOfChannels);
+            Console.WriteLine();
 
           //  Console.WriteLine(im.GetImage());
             Console.ReadLine();

@@ -9,17 +9,54 @@ namespace ConvolutionLayer.Operations
 {
     public static class Operators<T> where T : struct, IEquatable<T>, IFormattable
     {
-        public static double convolutionoperator(T[,] mainmatrix, T[,] kernel)
+        public static List<Matrix<T>> convolutionoperator(List<Matrix<T>> mainmatrix, Matrix<T> kernel, int stride)
         {
+        
 
-            var Mk = Matrix<T>.Build;
-            var mk = Mk.DenseOfArray(kernel);
+            //var Mk = Matrix<T>.Build;
+            //var mk = Mk.DenseOfArray(kernel);
 
-            var Ms = Matrix<T>.Build;
-            var ms = Ms.DenseOfArray(mainmatrix);
+            //dimensions of the mainmatrix
+            int mdepth = mainmatrix.Count;
+            int mcol = mainmatrix.ElementAt(0).ColumnCount;
+            int mrow = mainmatrix.ElementAt(0).RowCount;
+
+
+            //dimensions of the kernel matrix
+            int krow = kernel.RowCount;
+            int kcol = kernel.ColumnCount;
+
+             
+
+            int frow = ((mrow - krow) / stride) + 1;
+            int fcol = ((mcol - kcol) / stride) + 1;
+
+            
+            //create the double array
+            T[,] doublematrix = new T[frow, fcol];
+            //storage for the new matrix
+            List<Matrix<T>> newmatrix = new List<Matrix<T>>();
+            
+
+
+            for (int i = 0; i < mdepth; i++)
+            {
+                for(int j = 0; j < frow; j+=stride)
+                {
+                    for(int k = 0; k < fcol; k+=stride)
+                    {
+                        var b = mainmatrix.ElementAt(i).SubMatrix(j, krow, k, kcol);
+                        var c = pointWiseMultiply(b, kernel);
+                        var d = matrixSum(c);
+                        doublematrix[j, k] = d;
+                    }
+                }
+                newmatrix.Add(Matrix<T>.Build.DenseOfArray(doublematrix));
+            }
+
 
             // var result = DenseMatrix.OfArray(kernel);
-            return 0.0;
+            return newmatrix;
         }
 
         //change to private after unit testing
@@ -27,7 +64,9 @@ namespace ConvolutionLayer.Operations
         {
             try
             {
+                
                 return slicedmatrix.PointwiseMultiply(kernel);
+
             }
             catch (ArrayTypeMismatchException e)
             {
@@ -43,6 +82,7 @@ namespace ConvolutionLayer.Operations
             try
             {
                 var r = mainmatrix.ColumnSums();
+               
                 return r.Sum();
             }catch(ArrayTypeMismatchException e)
             {
@@ -59,5 +99,20 @@ namespace ConvolutionLayer.Operations
             int imagecol = mainmatrix.ColumnCount;
             //int depth = mainmatrix[]
         }
+
+        //public static Matrix<T> sliceslice(Matrix<T> slicedmatrix)
+        //{
+        //    try
+        //    {
+        //        return slicedmatrix.SubMatrix(0, 2, 0, 2);
+        //    }
+        //    catch (ArrayTypeMismatchException e)
+        //    {
+        //        var Mk = Matrix<T>.Build;
+        //        var mk = Mk.DenseOfArray(new T[2, 2]);
+        //        return mk;
+        //    }
+
+        //}
     }
 }

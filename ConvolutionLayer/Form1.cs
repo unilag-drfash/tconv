@@ -24,6 +24,7 @@ namespace ConvolutionLayer
             {
                 //Image im = Image.init("C:\\Users\\TOLIZU\\Pictures\\g1.jpeg");
                 Image im = Image.getInstance();
+               // im.GetImage().Data = 
                 this.pictureBox1.Image = im.GetImage().Bitmap;
                 this.pictureBox1.Show();
 
