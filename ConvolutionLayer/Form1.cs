@@ -27,6 +27,7 @@ namespace ConvolutionLayer
                 Image im = Image.init("C:\\Users\\TOLIZU\\Pictures\\g3.jpeg");
                 this.pictureBox1.Image = im.GetImage().Bitmap;
                 this.pictureBox1.Show();
+                this.pictureBox2.Hide();
 
             }
             catch(Exception )
@@ -47,8 +48,8 @@ namespace ConvolutionLayer
             Image im = Image.getInstance();
             var result = Operations.Operators<double>.poolingoperator(im.getImageMatrix(),3);
             im.setImageData(result);
-            this.pictureBox1.Image = im.GetImage().Bitmap;
-            this.pictureBox1.Show();
+            this.pictureBox2.Image = im.GetImage().Bitmap;
+            this.pictureBox2.Show();
         }
 
         private void SharpenOperationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,9 +60,9 @@ namespace ConvolutionLayer
             Console.WriteLine("stop");
             im.setImageData(result);
             Console.WriteLine("set");
-            this.pictureBox1.Image = im.GetImage().Bitmap;
+            this.pictureBox2.Image = im.GetImage().Bitmap;
             Console.WriteLine("show");
-            this.pictureBox1.Show();
+            this.pictureBox2.Show();
         }
 
         private void IdentityOperationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,9 +73,9 @@ namespace ConvolutionLayer
             Console.WriteLine("stop");
             im.setImageData(result);
             Console.WriteLine("set");
-            this.pictureBox1.Image = im.GetImage().Bitmap;
+            this.pictureBox2.Image = im.GetImage().Bitmap;
             Console.WriteLine("show");
-            this.pictureBox1.Show();
+            this.pictureBox2.Show();
         }
 
         private void EdgeDetectionOperationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,9 +91,9 @@ namespace ConvolutionLayer
             Console.WriteLine("stop");
             im.setImageData(result);
             Console.WriteLine("set");
-            this.pictureBox1.Image = im.GetImage().Bitmap;
+            this.pictureBox2.Image = im.GetImage().Bitmap;
             Console.WriteLine("show");
-            this.pictureBox1.Show();
+            this.pictureBox2.Show();
 
         }
 
@@ -104,9 +105,9 @@ namespace ConvolutionLayer
             Console.WriteLine("stop");
             im.setImageData(result);
             Console.WriteLine("set");
-            this.pictureBox1.Image = im.GetImage().Bitmap;
+            this.pictureBox2.Image = im.GetImage().Bitmap;
             Console.WriteLine("show");
-            this.pictureBox1.Show();
+            this.pictureBox2.Show();
         }
 
         private void Type3ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -117,9 +118,9 @@ namespace ConvolutionLayer
             Console.WriteLine("stop");
             im.setImageData(result);
             Console.WriteLine("set");
-            this.pictureBox1.Image = im.GetImage().Bitmap;
+            this.pictureBox2.Image = im.GetImage().Bitmap;
             Console.WriteLine("show");
-            this.pictureBox1.Show();
+            this.pictureBox2.Show();
         }
 
         private void BoxBlurOperationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -130,9 +131,14 @@ namespace ConvolutionLayer
             Console.WriteLine("stop");
             im.setImageData(result);
             Console.WriteLine("set");
-            this.pictureBox1.Image = im.GetImage().Bitmap;
+            this.pictureBox2.Image = im.GetImage().Bitmap;
             Console.WriteLine("show");
-            this.pictureBox1.Show();
+            this.pictureBox2.Show();
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

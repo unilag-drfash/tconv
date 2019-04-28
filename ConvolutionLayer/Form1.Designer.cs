@@ -43,8 +43,12 @@
             this.boxBlurOperationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.poolingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -54,7 +58,7 @@
             this.operationsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1176, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -98,7 +102,7 @@
             this.sharpenOperationToolStripMenuItem,
             this.boxBlurOperationToolStripMenuItem});
             this.convolutionToolStripMenuItem.Name = "convolutionToolStripMenuItem";
-            this.convolutionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.convolutionToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.convolutionToolStripMenuItem.Text = "Convolution";
             // 
             // identityOperationToolStripMenuItem
@@ -122,21 +126,21 @@
             // type1ToolStripMenuItem
             // 
             this.type1ToolStripMenuItem.Name = "type1ToolStripMenuItem";
-            this.type1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.type1ToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.type1ToolStripMenuItem.Text = "Type 1";
             this.type1ToolStripMenuItem.Click += new System.EventHandler(this.Type1ToolStripMenuItem_Click);
             // 
             // type2ToolStripMenuItem
             // 
             this.type2ToolStripMenuItem.Name = "type2ToolStripMenuItem";
-            this.type2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.type2ToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.type2ToolStripMenuItem.Text = "Type 2";
             this.type2ToolStripMenuItem.Click += new System.EventHandler(this.Type2ToolStripMenuItem_Click);
             // 
             // type3ToolStripMenuItem
             // 
             this.type3ToolStripMenuItem.Name = "type3ToolStripMenuItem";
-            this.type3ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.type3ToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.type3ToolStripMenuItem.Text = "Type 3";
             this.type3ToolStripMenuItem.Click += new System.EventHandler(this.Type3ToolStripMenuItem_Click);
             // 
@@ -157,25 +161,55 @@
             // poolingToolStripMenuItem
             // 
             this.poolingToolStripMenuItem.Name = "poolingToolStripMenuItem";
-            this.poolingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.poolingToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.poolingToolStripMenuItem.Text = "Pooling";
             this.poolingToolStripMenuItem.Click += new System.EventHandler(this.PoolingToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 97);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 101);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(776, 278);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.Size = new System.Drawing.Size(538, 278);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Location = new System.Drawing.Point(626, 101);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(538, 278);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 82);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Original Image";
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(623, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "New Image";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1176, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -184,6 +218,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,5 +241,8 @@
         private System.Windows.Forms.ToolStripMenuItem sharpenOperationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem boxBlurOperationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem poolingToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
