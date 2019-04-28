@@ -14,14 +14,17 @@ namespace ConvolutionLayer
         static void Main(string[] args)
         {
             Form1 form = new Form1();
-            Image im = Image.init("C:\\Users\\TOLIZU\\Pictures\\g1.jpeg");
-            var a = im.GetImage();
+           // Image im = Image.init("C:\\Users\\TOLIZU\\Pictures\\g3.jpeg");
+            
+           // var a = im.GetImage();
            //   var b = Array.CreateInstance(Double, a.Rows, a.Cols, a.NumberOfChannels); b = a.ManagedArray; ;
-            Console.WriteLine(a.Rows + " " + a.Cols + " " + a.NumberOfChannels);
-            Console.WriteLine();
+          //  Console.WriteLine(a.Rows + " " + a.Cols + " " + a.NumberOfChannels);
+           // Console.WriteLine();
+            //var b = a.Data;
+            //Console.WriteLine(b[0,0,0]);
 
           //  Console.WriteLine(im.GetImage());
-            Console.ReadLine();
+          //  Console.ReadLine();
             form.ShowDialog();
             
         }

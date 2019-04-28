@@ -15,13 +15,13 @@ namespace ConvolutionLayer
       
         private string path;
     
-        private Image<Bgr, Byte> img;
+        private Image<Bgr, Double> img;
         private List<MathNet.Numerics.LinearAlgebra.Matrix<double>> matrix;
 
         private Image(string path)
         {
             this.path = path;
-            this.img = new Image<Bgr, Byte>(this.path);
+            this.img = new Image<Bgr, Double>(this.path);
             this.matrix = new List<MathNet.Numerics.LinearAlgebra.Matrix<double>>();
         }
 
@@ -35,6 +35,11 @@ namespace ConvolutionLayer
             return singleton;
         }
 
+        public static void clearInstance()
+        {
+            singleton = null;
+        }
+
         public static Image init(string path)
         {
             if (singleton != null)
@@ -46,10 +51,11 @@ namespace ConvolutionLayer
             return singleton;
         }
        
-        public Image<Bgr, Byte> GetImage()
+        public Image<Bgr, Double> GetImage()
         {
             return this.img;
         }
+
 
         private List<MathNet.Numerics.LinearAlgebra.Matrix<double>> initMatrix()
         {
@@ -85,6 +91,35 @@ namespace ConvolutionLayer
         }
 
 
+        public void setImageData(List<MathNet.Numerics.LinearAlgebra.Matrix<double>> data)
+        {
+            this.matrix = data;
+            //List<MathNet.Numerics.LinearAlgebra.Matrix<double>> matrix = new List<MathNet.Numerics.LinearAlgebra.Matrix<double>>();
+            int rowcount = data[0].RowCount;
+            int colcount = data[0].ColumnCount;
+            int channelcount = data.Count;
+
+            //byte[,] temparray = new byte[rowcount, colcount] ;
+            double[,,] dtemparray = new double[rowcount, colcount,channelcount];
+
+            for (int i = 0; i < channelcount; i++)
+            {
+                for (int j = 0; j < rowcount; j++)
+                {
+                    for (int k = 0; k < colcount; k++)
+                    {
+                        dtemparray[j, k,i] = data[i][j,k];
+                    }
+                }
+               
+            }
+
+            this.img.Data = dtemparray;
+
+
+        }
+
+
         public List<MathNet.Numerics.LinearAlgebra.Matrix<double>> getImageMatrix()
         {
             return this.matrix;
@@ -95,7 +130,7 @@ namespace ConvolutionLayer
             this.matrix = matrix;
         }
 
-        public 
+        
     }
 
     

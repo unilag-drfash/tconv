@@ -22,17 +22,17 @@ namespace ConvolutionLayer
         {
             try
             {
-                //Image im = Image.init("C:\\Users\\TOLIZU\\Pictures\\g1.jpeg");
-                Image im = Image.getInstance();
-               // im.GetImage().Data = 
+                Image.clearInstance();
+
+                Image im = Image.init("C:\\Users\\TOLIZU\\Pictures\\g3.jpeg");
                 this.pictureBox1.Image = im.GetImage().Bitmap;
                 this.pictureBox1.Show();
 
             }
-            catch(Exception en)
+            catch(Exception )
             {
-                MessageBox.Show("An exception occured." + en);
-                
+              
+
             }
             
         }
@@ -40,6 +40,99 @@ namespace ConvolutionLayer
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void PoolingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Image im = Image.getInstance();
+            var result = Operations.Operators<double>.poolingoperator(im.getImageMatrix(),3);
+            im.setImageData(result);
+            this.pictureBox1.Image = im.GetImage().Bitmap;
+            this.pictureBox1.Show();
+        }
+
+        private void SharpenOperationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Image im = Image.getInstance();
+            Console.WriteLine("start");
+            var result = KernelOperations.sharpenOperation(im.getImageMatrix());
+            Console.WriteLine("stop");
+            im.setImageData(result);
+            Console.WriteLine("set");
+            this.pictureBox1.Image = im.GetImage().Bitmap;
+            Console.WriteLine("show");
+            this.pictureBox1.Show();
+        }
+
+        private void IdentityOperationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Image im = Image.getInstance();
+            Console.WriteLine("start");
+            var result = KernelOperations.identityOperation(im.getImageMatrix());
+            Console.WriteLine("stop");
+            im.setImageData(result);
+            Console.WriteLine("set");
+            this.pictureBox1.Image = im.GetImage().Bitmap;
+            Console.WriteLine("show");
+            this.pictureBox1.Show();
+        }
+
+        private void EdgeDetectionOperationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Type1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Image im = Image.getInstance();
+            Console.WriteLine("start");
+            var result = KernelOperations.blur1Operation(im.getImageMatrix());
+            Console.WriteLine("stop");
+            im.setImageData(result);
+            Console.WriteLine("set");
+            this.pictureBox1.Image = im.GetImage().Bitmap;
+            Console.WriteLine("show");
+            this.pictureBox1.Show();
+
+        }
+
+        private void Type2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Image im = Image.getInstance();
+            Console.WriteLine("start");
+            var result = KernelOperations.blur2Operation(im.getImageMatrix());
+            Console.WriteLine("stop");
+            im.setImageData(result);
+            Console.WriteLine("set");
+            this.pictureBox1.Image = im.GetImage().Bitmap;
+            Console.WriteLine("show");
+            this.pictureBox1.Show();
+        }
+
+        private void Type3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Image im = Image.getInstance();
+            Console.WriteLine("start");
+            var result = KernelOperations.blur3Operation(im.getImageMatrix());
+            Console.WriteLine("stop");
+            im.setImageData(result);
+            Console.WriteLine("set");
+            this.pictureBox1.Image = im.GetImage().Bitmap;
+            Console.WriteLine("show");
+            this.pictureBox1.Show();
+        }
+
+        private void BoxBlurOperationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Image im = Image.getInstance();
+            Console.WriteLine("start");
+            var result = KernelOperations.boxBlurOperation(im.getImageMatrix());
+            Console.WriteLine("stop");
+            im.setImageData(result);
+            Console.WriteLine("set");
+            this.pictureBox1.Image = im.GetImage().Bitmap;
+            Console.WriteLine("show");
+            this.pictureBox1.Show();
         }
     }
 }
