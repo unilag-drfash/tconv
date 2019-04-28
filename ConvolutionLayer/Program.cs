@@ -11,6 +11,7 @@ namespace ConvolutionLayer
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             Form1 form = new Form1();

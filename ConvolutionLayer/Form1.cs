@@ -22,17 +22,33 @@ namespace ConvolutionLayer
         {
             try
             {
-                Image.clearInstance();
+                
+                this.openFileDialog1.InitialDirectory = @"C:\Pictures\";
+                this.openFileDialog1.Title = "Select Picture";
+                DialogResult dr = this.openFileDialog1.ShowDialog();
+                if (dr == System.Windows.Forms.DialogResult.OK)
+                {
+                    try
+                    {
+                        string file = this.openFileDialog1.FileName;
+                        Image.clearInstance();
 
-                Image im = Image.init("C:\\Users\\TOLIZU\\Pictures\\g3.jpeg");
-                this.pictureBox1.Image = im.GetImage().Bitmap;
-                this.pictureBox1.Show();
-                this.pictureBox2.Hide();
+                        Image im = Image.init(file);
+                        this.pictureBox1.Image = im.GetImage().Bitmap;
+                        this.pictureBox1.Show();
+                        this.pictureBox2.Hide();
+                    }
+                    catch (Exception en)
+                    {
+                        MessageBox.Show("file reading error " +  en.Message + " " + en.Source.ToString());
+                    }
+                }
+               
 
             }
-            catch(Exception )
+            catch(Exception en)
             {
-              
+                MessageBox.Show("image creation error " + en.Message + " " + en.Source.ToString());
 
             }
             
@@ -137,6 +153,16 @@ namespace ConvolutionLayer
         }
 
         private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void OpenFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
         }
